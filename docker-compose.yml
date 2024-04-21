@@ -12,6 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock  # Mount the Docker socket
 
   infer:
+    container_name: infer_container
     build:
       context: ./infer  # Ensure you have a Dockerfile in this directory for Infer
     volumes:

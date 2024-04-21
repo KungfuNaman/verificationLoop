@@ -92,7 +92,7 @@ public class FeedbackService {
                 return ResponseEntity.ok(response);
             }
             String compileLog = readProcessOutput(compileProcess.getInputStream());
-            String[] command = {"docker", "exec", "feedbackfullstack-infer-1", "infer", "run", "--", "javac", "/code/" + filePath};
+            String[] command = {"docker", "exec", "infer_container", "infer", "run", "--", "javac", "/code/" + filePath};
             System.out.println("This is the command"+command);
             Process inferProcess = Runtime.getRuntime().exec(command);
             int inferResult = inferProcess.waitFor();
