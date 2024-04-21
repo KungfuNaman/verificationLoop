@@ -1,0 +1,32 @@
+{
+    "demo1": {
+        "code": "import java.util.Scanner;\n\npublic class Fibonacci {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter the number of terms: \");\n        int n = scanner.nextInt();\n\n        int[] fibSequence = fibonacci(n);\n        System.out.print(\"Fibonacci Sequence: \");\n        for (int i = 0; i < n; i++) {\n            System.out.print(fibSequence[i] + \" \");\n        }\n    }\n\n    public static int[] fibonacci(int n) {\n        int[] fibSequence = new int[n];\n        fibSequence[0] = 0;\n        fibSequence[1] = 1;\n\n        for (int i = 2; i < n; i++) {\n            fibSequence[i] = fibSequence[i - 1] + fibSequence[i - 2];\n        }\n        return fibSequence;\n    }\n}",
+        "fileName": "Fibonacci.java",
+        "title": "Fibonacci Program"
+    },
+    "demo2": {
+        "code": "import java.util.Scanner;\n\npublic class Factorial {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter a number: \");\n        int n = scanner.nextInt();\n\n        int result = factorial(n);\n        System.out.println(\"Factorial of \" + n + \" is: \" + result);\n    }\n\n    public static int factorial(int n) {\n        if (n == 0) return 1;\n        int result = 1;\n        for (int i = 1; i <= n; i++) {\n            result *= i;\n        }\n        return result;\n    }\n}",
+        "fileName": "Factorial.java",
+        "title": "Factorial Program"
+    },
+    "demo3": {
+        "code": "import java.util.Scanner;\n\npublic class PrimeCheck {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter a number: \");\n        int num = scanner.nextInt();\n\n        boolean isPrime = isPrime(num);\n        if (isPrime) {\n            System.out.println(num + \" is a prime number.\");\n        } else {\n            System.out.println(num + \" is not a prime number.\");\n        }\n    }\n\n    public static boolean isPrime(int num) {\n        if (num <= 1) return false;\n        for (int i = 2; i <= Math.sqrt(num); i++) {\n            if (num % i == 0) return false;\n        }\n        return true;\n    }\n}",
+        "fileName": "PrimeCheck.java",
+        "title": "PrimeCheck Program"
+    },
+    "demo4": {
+        "code": "import java.util.Scanner;\n\npublic class Palindrome {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter a string or number: \");\n        String input = scanner.nextLine();\n\n        boolean isPalindrome = isPalindrome(input);\n        if (isPalindrome) {\n            System.out.println(input + \" is a palindrome.\");\n        } else {\n            System.out.println(input + \" is not a palindrome.\");\n        }\n    }\n\n    public static boolean isPalindrome(String input) {\n        int left = 0;\n        int right = input.length() - 1;\n        while (left < right) {\n            if (input.charAt(left) != input.charAt(right)) return false;\n            left++;\n            right--;\n        }\n        return true;\n    }\n}",
+        "fileName": "Palindrome.java",
+        "title": "Palindrome Program"
+    },
+    "demo5": {
+        "code": "import java.util.Scanner;\n\npublic class NaturalSum {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter the number of terms: \");\n        int n = scanner.nextInt();\n\n        int sum = sumOfNatural(n);\n        System.out.println(\"Sum of the first \" + n + \" natural numbers is: \" + sum);\n    }\n\n    public static int sumOfNatural(int n) {\n        return n * (n + 1) / 2;\n    }\n}",
+        "fileName": "NaturalSum.java",
+        "title": "NaturalSum Program"
+    },
+    "demo6": {
+        "code": "public class PossibleNullDereference {\n    public static void main(String[] args) {\n        String data = possiblyNull(true);\n        // Attempt to access a method on a potentially null object.\n        System.out.println(data.length());\n    }\n\n    public static String possiblyNull(boolean returnNull) {\n        if (returnNull) {\n            return null;\n        } else {\n            return \"Hello, World!\";\n        }\n    }\n}",
+        "fileName": "PossibleNullDereference.java",
+        "title": "Possible Null Dereference Program"
+    }
+}

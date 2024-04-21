@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+      - /app/target
+      - /var/run/docker.sock:/var/run/docker.sock  # Mount the Docker socket
+
+  infer:
+    build:
+      context: ./infer  # Ensure you have a Dockerfile in this directory for Infer
+    volumes:
+      - ./backend:/code  # Mount the backend code directory for analysis
+    command: ["tail", "-f", "/dev/null"]  # Keep the container alive
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
