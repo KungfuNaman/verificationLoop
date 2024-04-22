@@ -1,101 +1,38 @@
+# FeedBackLoopFullStack
 
-The project proposes an iterative tool to verify LLM code completions with CheckStyle and Infer in a feedback loop.
+This project introduces an iterative tool designed to verify LLM (Large Language Model) code completions using CheckStyle, Infer, and Java NASA Path Finder in a continuous feedback loop.
 
-* For the required inputs, you could make the CheckStyle config optional by using a "reasonable default" config. This way you lower the barrier to using your tool, but still make it flexible and customisable.
+## Getting Started
 
-* Clear methodology and evaluation, very well done!
+### Prerequisites
 
-* While CheckStyle and Infer are good tools, none of them can check for semantic correctness. For example, they can check that a fibonacci program is free of memory errors, and that variables are written in camelCase, but it cannot really check that it indeed outputs the fibonacci sequence. You could strengthen the tool by using a symbolic execution engine (like NASA Pathfinder for Java), and injecting the user's prompt to furthermore ask for behavioural assertions in the code.
+Ensure that Docker is installed on your machine. You can download it from the Docker website.
 
-# feedBackLoopFullStack
+### Installation
 
+1. **Open a terminal and navigate to the root of the project folder.**  
+   Verify that you are in the correct directory by typing `ls`. Confirm the presence of the `docker-compose.yml` file.
 
-ERROR: failed to solve: failed to read dockerfile: failed to create lease: read-only file system
-Solution: Sometimes, the Docker daemon might encounter issues that could lead to a read-only file system error. Restarting the Docker service might resolve the problem. You can restart Docker on macOS by clicking the Docker icon in the menu bar and selecting "Restart".
+2. **Start your Docker daemon**  
+   This step depends on your operating system, but generally, Docker starts automatically after installation.
 
+3. **Run Docker Compose**  
+   Use the following command to start all the Docker components:
+   ```bash
+   docker-compose up --build
 
-# to run the docker images: 
-```docker-compose up --build```
+### Usage
 
-# used this java path finder 
-```https://github.com/javapathfinder/jpf-core```
+1. **Access the Interface**  
+    Open your web browser and navigate to:
+    ```bash
+   http://localhost:3000
 
-
-# Creating a Java Test Class
-This example involves a shared counter with two threads incrementing it. We'll introduce a potential for a race condition by not synchronizing access to the counter.
-
-Counter.java
-
-java
-Copy code
-public class Counter {
-    private int count = 0;
-
-    public void increment() {
-        count++;  // This operation is not thread-safe
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public static void main(String[] args) {
-        final Counter counter = new Counter();
-
-        // Thread 1
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 1000; i++) {
-                    counter.increment();
-                }
-            }
-        });
-
-        // Thread 2
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 1000; i++) {
-                    counter.increment();
-                }
-            }
-        });
-
-        t1.start();
-        t2.start();
-
-        try {
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            System.out.println("Threads interrupted");
-        }
-
-        System.out.println("Final count: " + counter.getCount());
-        // The expected count would be 2000, but due to race conditions, it might be less.
-    }
-}
-# Compile and Run with Java Pathfinder
-Compile the Program:
-Compile Counter.java using the javac tool.
-
-bash
-Copy code
-javac Counter.java
-Create a JPF Configuration File:
-Create a file named Counter.jpf to configure Java Pathfinder for this specific test.
-
-Counter.jpf
-
-properties
-# Copy code
-target=Counter
-classpath=.
-
-This tells JPF to target the Counter class and use the current directory for the classpath.
-
-# Run JPF:
-
-inside testJpf folder
- java -jar ./../jpf-core/build/RunJPF.jar HelloWorld.jpf```
+2. **Demo and Custom Code Verification**  
+To test with a demo program, click on the designated button to load the sample code and then click 'Submit' to see the results.
+To verify your own code, ensure that the Java class name is correct; otherwise, the code verification might fail.
+3. **Iterative Feedback and Visualization**  
+   After submitting the code, the issues identified by the verifier will be displayed. You can use these details to refine your code. Once adjustments are made, resubmit the code to see if the issues have been resolved.
+   Visualizations on the right side of the interface help track the number of issues over each iteration.
+3. **Resetting Iterations**  
+To begin a new iteration cycle, click on the 'Clear Iterations' button to reset the process.
