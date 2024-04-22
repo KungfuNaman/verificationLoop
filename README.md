@@ -17,7 +17,7 @@ Ensure that Docker is installed on your machine and make sure it is running. You
    This step depends on your operating system, but generally, Docker starts automatically after installation.
 
 3. **Run Docker Compose**  
-   Use the following command to start all the Docker components:
+   Use the following command to start all the Docker components, for the first time as it builds infer as well, it can take around 15 mins:
    ```bash
    docker-compose up --build
 
