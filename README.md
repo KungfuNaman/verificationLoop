@@ -30,7 +30,7 @@ Ensure that Docker is installed on your machine. You can download it from the Do
 
 2. **Demo and Custom Code Verification**  
 To test with a demo program, click on the designated button to load the sample code and then click 'Submit' to see the results.
-To verify your own code, ensure that the Java class name is correct; otherwise, the code verification might fail.
+Ensure that the Java class name is correct; otherwise, the code verification might fail.
 3. **Iterative Feedback and Visualization**  
    After submitting the code, the issues identified by the verifier will be displayed. You can use these details to refine your code. Once adjustments are made, resubmit the code to see if the issues have been resolved.
    Visualizations on the right side of the interface help track the number of issues over each iteration.
