@@ -1,12 +1,12 @@
 # FeedBackLoopFullStack
 
-This project introduces an iterative tool designed to verify LLM (Large Language Model) code completions using CheckStyle, Infer, and Java NASA Path Finder in a continuous feedback loop.
+This project introduces an iterative tool designed to verify LLM (Large Language Model) code completions using CheckStyle, Infer, and Java NASA Path Finder in an iterative feedback cycle.
 
 ## Getting Started
 
 ### Prerequisites
 
-Ensure that Docker is installed on your machine. You can download it from the Docker website.
+Ensure that Docker is installed on your machine and make sure it is running. You can download it from the Docker website.
 
 ### Installation
 
